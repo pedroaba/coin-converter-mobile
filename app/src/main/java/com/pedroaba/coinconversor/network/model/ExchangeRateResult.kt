@@ -11,4 +11,12 @@ data class ExchangeRateResult(
 
     @SerialName("exchange_rate")
     val exchangeRate: Double,
-)
+) {
+    companion object {
+        fun empty() = ExchangeRateResult(
+            from = "",
+            to = "",
+            exchangeRate = 0.0
+        )
+    }
+}

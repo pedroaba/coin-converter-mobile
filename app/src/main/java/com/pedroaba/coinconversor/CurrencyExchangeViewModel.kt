@@ -2,9 +2,9 @@ package com.pedroaba.coinconversor
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.pedroaba.coinconversor.network.KtorHTTPClient
 import com.pedroaba.coinconversor.network.model.CurrencyType
 import com.pedroaba.coinconversor.network.model.ExchangeRateResult
-import com.pedroaba.coinconversor.network.KtorHTTPClient
 import com.pedroaba.coinconversor.utils.CurrencyTypeAcronym
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -20,15 +20,17 @@ class CurrencyExchangeViewModel : ViewModel() {
     val currencyTypes: StateFlow<Result<List<CurrencyType>>> = _currencyTypes.asStateFlow()
 
     private val _exchangeRate =
-        MutableStateFlow<Result<ExchangeRateResult?>>(Result.success(null))
+        MutableStateFlow<Result<ExchangeRateResult?>>(Result.success(ExchangeRateResult.empty()))
 
     val exchangeRate: StateFlow<Result<ExchangeRateResult?>> = _exchangeRate.asStateFlow()
 
     fun requireCurrencyTypes() {
         viewModelScope.launch {
-            _currencyTypes.value = KtorHTTPClient.getCurrencyTypes().mapCatching { result ->
-                result.values
-            }
+            _currencyTypes.emit(
+                KtorHTTPClient.getCurrencyTypes().mapCatching { result ->
+                    result.values
+                }
+            )
         }
     }
 
@@ -45,7 +47,7 @@ class CurrencyExchangeViewModel : ViewModel() {
         }
 
         viewModelScope.launch {
-            _exchangeRate.value = KtorHTTPClient.getCurrencyExchange(from, to)
+            _exchangeRate.emit(KtorHTTPClient.getCurrencyExchange(from, to))
         }
     }
 }

@@ -4,4 +4,7 @@
     <string name="description">Digite o valor e escolha as moedas de conversão</string>
     <string name="country_flag">Imagem da bandeira do país relacionado a moeda</string>
     <string name="initial_value">1000,00</string>
+    <string name="error_message">Ops... Houve uma falha no carregamento dos dados.</string>
+    <string name="error_message_subtitle">Não foi possível carregar uma lista de tipos monetários.\nVerifique a sua conexão com a internet e tente novamente.</string>
+    <string name="try_again">Tente novamente</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.pedroaba.coinconversor.model
+package com.pedroaba.coinconversor.network.model
 
 import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.SerialName

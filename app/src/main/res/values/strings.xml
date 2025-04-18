@@ -3,4 +3,5 @@
     <string name="coin_converter">Conversor de moedas</string>
     <string name="description">Digite o valor e escolha as moedas de conversão</string>
     <string name="country_flag">Imagem da bandeira do país relacionado a moeda</string>
+    <string name="initial_value">1000,00</string>
 </resources>

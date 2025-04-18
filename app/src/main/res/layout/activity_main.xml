@@ -69,16 +69,29 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvSubtitle">
 
-                <EditText
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:background="@android:color/transparent"
-                    android:importantForAutofill="no"
-                    android:inputType="number"
-                    android:minHeight="48dp"
-                    tools:ignore="LabelFor"
-                    tools:text="R$ 1000,00" />
+                    android:layout_weight="4">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R$"
+                        android:textSize="16sp"
+                        android:padding="8dp"
+                        android:id="@+id/tvFromCurrencySymbol" />
+
+                    <EditText
+                        android:id="@+id/etFromExchangeValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:minHeight="48dp"
+                        tools:ignore="LabelFor"
+                        android:text="@string/initial_value" />
+                </LinearLayout>
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -87,10 +100,11 @@
                     android:src="@drawable/img_divider" />
 
                 <Spinner
+                    android:id="@+id/spnFromExchange"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:padding="8dp"
+                    android:minHeight="48dp"
                     tools:listitem="@layout/item_currency_type" />
             </LinearLayout>
 
@@ -120,16 +134,27 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ivArrowExchange">
 
-                <EditText
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:background="@android:color/transparent"
-                    android:importantForAutofill="no"
-                    android:inputType="number"
-                    android:minHeight="48dp"
-                    tools:ignore="LabelFor"
-                    tools:text="R$ 1000,00" />
+                    android:layout_weight="4">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R$"
+                        android:textSize="16sp"
+                        android:padding="8dp"
+                        android:id="@+id/tvToCurrencySymbol" />
+
+                    <TextView
+                        android:id="@+id/tvToExchangeValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:importantForAutofill="no"
+                        android:textSize="18sp"
+                        android:text="@string/initial_value" />
+                </LinearLayout>
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -138,10 +163,11 @@
                     android:src="@drawable/img_divider" />
 
                 <Spinner
+                    android:id="@+id/spnToExchange"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:padding="8dp"
+                    android:minHeight="48dp"
                     tools:listitem="@layout/item_currency_type" />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
